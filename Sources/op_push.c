@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.h                                         :+:      :+:    :+:   */
+/*   op_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 17:05:21 by ghwa              #+#    #+#             */
-/*   Updated: 2023/11/21 12:43:19 by ghwa             ###   ########.fr       */
+/*   Created: 2023/12/01 12:58:18 by ghwa              #+#    #+#             */
+/*   Updated: 2023/12/01 15:06:35 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSHSWAP_H
-# define PUSHSWAP_H
+#include "./../pushswap.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include "../../libft/libft.h"
+void	ps_push(t_list **stacki, t_list **stacko)
+{
+	t_list	*node;
 
-typedef struct s_ps {
-	int		argc;
-	char	**argv;
-	int		itemcount;
-}	t_ps;
+	if (*stacki == NULL)
+		return ;
+	node = *stacki;
+	*stacki = (*stacki)->next;
+	node->next = *stacko;
+	*stacko = node;
+}
 
-int		checkinputs(t_ps *ps, int argc, char **argv);
-int		initall(t_ps *ps, int argc, char **argv);
-int		initlinkedlist(t_ps *ps, t_list **stacka);
+void	ps_pa(t_list **stacka, t_list **stackb)
+{
+	ps_push(stacka, stackb);
+}
 
-#endif
+void	ps_pb(t_list **stacka, t_list **stackb)
+{
+	ps_push(stackb, stacka);
+}
