@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:11:52 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/07 16:14:41 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/07 16:20:34 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	*bubblesort(t_ps *ps)
 
 	i = 0;
 	j = 0;
-	arr = ft_dupiarray(ps->iargv);
+	arr = ft_dupiarray(ps->iargv, ps->itemcount);
 	while (i < ps->itemcount - 1)
 	{
 		j = 0;
