@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:05:21 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/01 15:15:47 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/07 14:33:19 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_ps {
 	int		*iargv;
 	int		itemcount;
 	int		indexa;
+	int		*quadrets;
 }	t_ps;
 
 int		initall(t_ps *ps, int argc, char **argv);
@@ -31,6 +32,7 @@ int		checkinputs(t_ps *ps);
 void	initlinkedlist(t_ps *ps, t_list **stacka);
 int		error(char *error);
 void	printlists(t_list *stacka, t_list *stackb);
+void	push_quadrants(t_ps *ps, t_list **stacka, t_list **stackb);
 int		*bubblesort(t_ps *ps);
 int		countnodes(t_list *stack);
 void	ps_donothing(t_list **stack);
@@ -45,4 +47,8 @@ void	ps_rotate(t_list **stack);
 void	ps_ra(t_list **stacka, t_list **stackb);
 void	ps_rb(t_list **stacka, t_list **stackb);
 void	ps_rr(t_list **stacka, t_list **stackb);
+void	ps_reverse_rotate(t_list **stack);
+void	ps_rra(t_list **stacka, t_list **stackb);
+void	ps_rrb(t_list **stacka, t_list **stackb);
+void	ps_rrr(t_list **stacka, t_list **stackb);
 #endif
