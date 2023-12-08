@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:11:52 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/08 10:13:24 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/08 16:23:47 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	printlists(t_list *stacka, t_list *stackb)
 		ft_printf("%d -> ", *((int *)(head->content)));
 		head = head->next;
 	}
-	printf("NULL\n");
+	ft_printf("NULL\n");
 	head = stackb;
 	ft_printf("Stack B: ");
 	while (head != NULL)
@@ -31,7 +31,7 @@ void	printlists(t_list *stacka, t_list *stackb)
 		ft_printf("%d -> ", *((int *)(head->content)));
 		head = head->next;
 	}
-	printf("NULL\n\n");
+	ft_printf("NULL\n\n");
 }
 
 int	countnodes(t_list *stack)
@@ -76,4 +76,25 @@ int	*bubblesort(t_ps *ps)
 		i++;
 	}
 	return (arr);
+}
+
+void	print_ops(t_ps *ps)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("Total Steps: %d\n", ps->steps);
+	ps->ops[ps->steps][0] = '\0';
+	while (i < ps->steps)
+	{
+		printf("%s %d\n", ps->ops[i], i);
+		i++;
+	}
+	return ;
+}
+
+void	add_ops(t_ps *ps, char *str)
+{
+	ps->ops[ps->steps] = ft_strjoin(str, " ");
+	return ;
 }

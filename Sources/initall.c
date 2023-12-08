@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:23:56 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/08 11:33:52 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/08 16:10:10 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	initlinkedlist(t_ps *ps, t_list **stack)
 	int		i;
 
 	i = 0;
-	printf("%d items\n", ps->itemcount);
 	while (i < ps->argc - 1)
 		ft_lstadd_back(stack, ft_lstnew(&ps->iargv[i++]));
 }

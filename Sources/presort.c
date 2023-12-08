@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:55:09 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/08 13:35:03 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/08 16:21:06 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,23 @@ t_list	*push_quadrants(t_ps *ps, t_list **stacka, t_list **stackb)
 
 	i = 0;
 	j = 0;
+	if (ps->itemcount < 4)
+	{
+		while (i++ < ps->itemcount)
+			ps_pa(stacka, stackb, ps);
+		return (*stacka);
+	}
 	set_quadrants(ps);
 	while (j < countnodes(*stacka))
 	{
-		if (*((int *)((*stacka)->content)) <= ps->quadrets[i])
+		if (*((int *)((*stacka)->content)) <= ps->quadrets[i] || (*stacka)->next == NULL)
 		{
 			ps_pa(stacka, stackb, ps);
 			printlists(*stacka, *stackb);
 		}
-		else
+		else if ((*stacka)->next != NULL && j++)
 		{
 			ps_ra(stacka, stackb, ps);
-			j++;
 			printlists(*stacka, *stackb);
 		}
 		if (j == countnodes(*stacka) && i++ < 4)

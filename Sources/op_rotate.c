@@ -6,13 +6,13 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:05:20 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/08 13:35:39 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/08 16:16:56 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../pushswap.h"
 
-t_list	*ps_rotate(t_list **stack, t_ps *ps)
+t_list	*ps_rotate(t_list **stack)
 {
 	t_list	*node;
 	t_list	*current;
@@ -20,7 +20,7 @@ t_list	*ps_rotate(t_list **stack, t_ps *ps)
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		error("Insufficient Arguments for rotate");
+		error("Insufficient Arguments for Rotate");
 		return (*stack);
 	}
 	node = *stack;
@@ -31,24 +31,32 @@ t_list	*ps_rotate(t_list **stack, t_ps *ps)
 	(current)->next = node;
 	node->next = NULL;
 	*stack = head;
-	ps->steps++;
 	return (*stack);
 }
 
 t_list	*ps_ra(t_list **stacka, t_list **stackb, t_ps *ps)
 {
 	ps_donothing(stackb);
-	return (ps_rotate(stacka, ps));
+	ps_rotate(stacka);
+	add_ops(ps, "ra");
+	ps->steps++;
+	return (*stacka);
 }
 
 t_list	*ps_rb(t_list **stacka, t_list **stackb, t_ps *ps)
 {
 	ps_donothing(stacka);
-	return (ps_rotate(stackb, ps));
+	ps_rotate(stackb);
+	add_ops(ps, "rb");
+	ps->steps++;
+	return (*stackb);
 }
 
 void	ps_rr(t_list **stacka, t_list **stackb, t_ps *ps)
 {
-	ps_rotate(stacka, ps);
-	ps_rotate(stackb, ps);
+	ps_rotate(stacka);
+	ps_rotate(stackb);
+	add_ops(ps, "rr");
+	ps->steps++;
+	return ;
 }
