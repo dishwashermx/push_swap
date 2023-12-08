@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_reverse_rotate.c                                :+:      :+:    :+:   */
+/*   op_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:05:20 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/07 13:51:28 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/08 13:35:39 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../pushswap.h"
 
-void	ps_rotate(t_list **stack)
+t_list	*ps_rotate(t_list **stack, t_ps *ps)
 {
 	t_list	*node;
 	t_list	*current;
 	t_list	*head;
 
 	if (*stack == NULL || (*stack)->next == NULL)
-		return ((void)error("Insufficient Arguments for rotate"));
-	head = *stack;
+	{
+		error("Insufficient Arguments for rotate");
+		return (*stack);
+	}
 	node = *stack;
 	current = *stack;
 	head = (*stack)->next;
@@ -28,23 +30,25 @@ void	ps_rotate(t_list **stack)
 		current = (current)->next;
 	(current)->next = node;
 	node->next = NULL;
-	*stack = node;
+	*stack = head;
+	ps->steps++;
+	return (*stack);
 }
 
-void	ps_ra(t_list **stacka, t_list **stackb)
+t_list	*ps_ra(t_list **stacka, t_list **stackb, t_ps *ps)
 {
-	ps_rotate(stacka);
 	ps_donothing(stackb);
+	return (ps_rotate(stacka, ps));
 }
 
-void	ps_rb(t_list **stacka, t_list **stackb)
+t_list	*ps_rb(t_list **stacka, t_list **stackb, t_ps *ps)
 {
-	ps_rotate(stackb);
 	ps_donothing(stacka);
+	return (ps_rotate(stackb, ps));
 }
 
-void	ps_rr(t_list **stacka, t_list **stackb)
+void	ps_rr(t_list **stacka, t_list **stackb, t_ps *ps)
 {
-	ps_rotate(stacka);
-	ps_rotate(stackb);
+	ps_rotate(stacka, ps);
+	ps_rotate(stackb, ps);
 }

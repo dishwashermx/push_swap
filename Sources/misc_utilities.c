@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:11:52 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/07 16:20:34 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/08 10:13:24 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	printlists(t_list *stacka, t_list *stackb)
 		ft_printf("%d -> ", *((int *)(head->content)));
 		head = head->next;
 	}
-	printf("NULL\n");
+	printf("NULL\n\n");
 }
 
 int	countnodes(t_list *stack)

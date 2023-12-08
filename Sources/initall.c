@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:23:56 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/01 15:27:32 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/08 11:33:52 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	initall(t_ps *ps, int argc, char **argv)
 {
 	ps->argc = argc;
 	ps->argv = argv;
-	ps->indexa = 1;
 	ps->itemcount = argc - 1;
 	ps->iargv = malloc(ps->itemcount * sizeof(int) + 1);
+	ps->steps = 0;
 	return (1);
 }
 
