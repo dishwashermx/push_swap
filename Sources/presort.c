@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:55:09 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/08 16:21:06 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/13 11:31:16 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,16 @@ void	set_quadrants(t_ps *ps)
 	j = 0;
 	arr = bubblesort(ps);
 	quarter = ps->itemcount / 4;
-	printf("quarter = %d\n", quarter);
 	while (i < ps->itemcount)
 	{
 		if (i % quarter == 0 && j < 3)
 		{
 			ps->quadrets[j] = arr[i + 1];
-			printf("quadret %d: %d\n", j + 1, ps->quadrets[j]);
 			j++;
 		}
 		i++;
 	}
 	ps->quadrets[j] = arr[i - 1];
-	printf("quadret %d: %d\n", j, ps->quadrets[j]);
 }
 
 t_list	*push_quadrants(t_ps *ps, t_list **stacka, t_list **stackb)
@@ -48,22 +45,17 @@ t_list	*push_quadrants(t_ps *ps, t_list **stacka, t_list **stackb)
 	if (ps->itemcount < 4)
 	{
 		while (i++ < ps->itemcount)
-			ps_pa(stacka, stackb, ps);
+			ps_pb(stacka, stackb, ps);
 		return (*stacka);
 	}
 	set_quadrants(ps);
 	while (j < countnodes(*stacka))
 	{
-		if (*((int *)((*stacka)->content)) <= ps->quadrets[i] || (*stacka)->next == NULL)
-		{
-			ps_pa(stacka, stackb, ps);
-			printlists(*stacka, *stackb);
-		}
+		if (*((int *)((*stacka)->content)) <= ps->quadrets[i] \
+		|| (*stacka)->next == NULL)
+			ps_pb(stacka, stackb, ps);
 		else if ((*stacka)->next != NULL && j++)
-		{
 			ps_ra(stacka, stackb, ps);
-			printlists(*stacka, *stackb);
-		}
 		if (j == countnodes(*stacka) && i++ < 4)
 			j = 0;
 	}

@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:11:36 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/08 15:39:12 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/13 10:53:25 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,5 @@ int	main(int argc, char **argv)
 		return (0);
 	initlinkedlist(&ps, &stacka);
 	push_quadrants(&ps, &stacka, &stackb);
-	print_ops(&ps);
 	return (0);
 }
