@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:55:09 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/13 11:31:16 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/13 16:03:59 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ t_list	*push_quadrants(t_ps *ps, t_list **stacka, t_list **stackb)
 		if (j == countnodes(*stacka) && i++ < 4)
 			j = 0;
 	}
+	ft_printf("\nTotal Steps: %d\n", ps->steps);
 	return (*stacka);
 }
