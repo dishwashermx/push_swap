@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:55:09 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/13 16:03:59 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/14 11:36:31 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,24 @@ void	set_quadrants(t_ps *ps)
 	ps->quadrets[j] = arr[i - 1];
 }
 
+void	rotatebothquestionmark(t_list **stacka, t_list **stackb, t_ps *ps)
+{
+	t_list	*stackb2;
+
+	stackb2 = *stackb;
+	if (stackb2->next == NULL || stackb2 == NULL)
+	{
+		ps_ra(stacka, stackb, ps);
+		return ;
+	}
+	stackb2 = stackb2->next;
+	if (*((int *)((*stackb)->content)) < *(int *)(stackb2->content))
+		ps_rr(stacka, stackb, ps);
+	else
+		ps_ra(stacka, stackb, ps);
+	return ;
+}
+
 t_list	*push_quadrants(t_ps *ps, t_list **stacka, t_list **stackb)
 {
 	int		i;
@@ -42,12 +60,6 @@ t_list	*push_quadrants(t_ps *ps, t_list **stacka, t_list **stackb)
 
 	i = 0;
 	j = 0;
-	if (ps->itemcount < 4)
-	{
-		while (i++ < ps->itemcount)
-			ps_pb(stacka, stackb, ps);
-		return (*stacka);
-	}
 	set_quadrants(ps);
 	while (j < countnodes(*stacka))
 	{
@@ -55,7 +67,7 @@ t_list	*push_quadrants(t_ps *ps, t_list **stacka, t_list **stackb)
 		|| (*stacka)->next == NULL)
 			ps_pb(stacka, stackb, ps);
 		else if ((*stacka)->next != NULL && j++)
-			ps_ra(stacka, stackb, ps);
+			rotatebothquestionmark(stacka, stackb, ps);
 		if (j == countnodes(*stacka) && i++ < 4)
 			j = 0;
 	}

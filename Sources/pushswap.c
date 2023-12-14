@@ -6,11 +6,11 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:11:36 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/13 10:53:25 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/14 14:39:38 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../pushswap.h"
+#include "../pushswap.h"
 
 int	main(int argc, char **argv)
 {
@@ -24,6 +24,11 @@ int	main(int argc, char **argv)
 	if (checkinputs(&ps) == 0)
 		return (0);
 	initlinkedlist(&ps, &stacka);
-	push_quadrants(&ps, &stacka, &stackb);
+	printlists(stacka, stackb);
+	if (countnodes(stacka) <= 5)
+		smallsort(&ps, &stacka, &stackb);
+	else
+		push_quadrants(&ps, &stacka, &stackb);
+	printlists(stacka, stackb);
 	return (0);
 }

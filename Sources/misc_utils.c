@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:11:52 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/13 11:34:42 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/14 14:40:12 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	printlists(t_list *stacka, t_list *stackb)
 	t_list	*head;
 
 	head = stacka;
-	ft_printf("Stack A: ");
+	ft_printf("\n\nStack A: ");
 	while (head != NULL)
 	{
 		ft_printf("%d -> ", *((int *)(head->content)));

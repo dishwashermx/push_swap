@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:05:21 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/13 12:45:02 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/14 17:29:35 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ t_list	*push_quadrants(t_ps *ps, t_list **stacka, t_list **stackb);
 int		*bubblesort(t_ps *ps);
 int		countnodes(t_list *stack);
 void	add_ops(char *str);
+void	smallsort(t_ps *ps, t_list **stacka, t_list **stackb);
+void	threesort(t_list **stacka, t_list **stackb, t_ps *ps);
+void	threesortplus(t_list **stacka, t_list **stackb, t_ps *ps);
+void	pushintopos(t_list **stacka, t_list **stackb, t_ps *ps, int pos);
 
 void	ps_donothing(t_list **stack);
 t_list	*ps_swap(t_list **stack);
