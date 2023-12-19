@@ -6,19 +6,19 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 17:13:40 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/14 17:31:22 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/19 14:51:30 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "../pushswap.h"
 
-void	pushintopos(t_list **stacka, t_list **stackb, t_ps *ps, int pos)
-{
-	int	i;
+// void	pushintopos(t_list **stacka, t_list **stackb, t_ps *ps, int pos)
+// {
+// 	int	i;
 
-	i = 0;
-	if ((countnodes(*stacka) / 2) > pos)
-	{
+// 	i = 0;
+// 	if ((countnodes(*stacka) / 2) > pos)
+// 	{
 		
-	}
-}
+// 	}
+// }

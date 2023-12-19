@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:36:16 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/14 17:06:04 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/19 14:52:35 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	threesortplus(t_list **stacka, t_list **stackb, t_ps *ps)
 
 	i = 1;
 	while (countnodes(*stacka) > 3)
-		ps_pb(*stacka, *stackb, ps);
+		ps_pb(stacka, stackb, ps);
 	threesort(stacka, stackb, ps);
 	stacka2 = *stacka;
 	while (stacka2 != NULL)
@@ -62,7 +62,7 @@ void	threesortplus(t_list **stacka, t_list **stackb, t_ps *ps)
 			ps_pa(stacka, stackb, ps);
 			ps_ra(stacka, stackb, ps);
 			i = 0;
-			stacka2 = stacka;
+			stacka2 = *stacka;
 		}
 	}
 }
