@@ -6,18 +6,16 @@
 #    By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 17:20:07 by ghwa              #+#    #+#              #
-#    Updated: 2023/12/19 15:02:27 by ghwa             ###   ########.fr        #
+#    Updated: 2023/12/19 17:08:59 by ghwa             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFILES = pushswap.c \
 	  checks.c \
 	  initall.c \
-	  misc_utils.c \
-	  push_utils.c \
-	  presort.c \
-	  op_swap.c op_push.c op_rotate.c op_reverse_rotate.c \
-	  smallsort.c
+	  push_utils.c misc_utils.c \
+	  presort.c smallsort.c \
+	  op_swap.c op_push.c op_rotate.c op_reverse_rotate.c
 LIBFT_DIR = ../libft/src
 SOURCES = $(addprefix src/, $(CFILES))
 OBJECTS = ${SOURCES:.c=.o}
@@ -40,6 +38,9 @@ $(NAME): $(LIBFT) $(OBJECTS)
 
 %.o: %.c
 	$(CC) $(FLAGS) -c -o $@ $<
+
+libft:
+	$(LIBFT)
 
 clean:
 	rm -f $(OBJECTS)

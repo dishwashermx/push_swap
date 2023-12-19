@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:36:16 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/19 14:52:35 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/19 17:37:25 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,18 @@ void	threesortplus(t_list **stacka, t_list **stackb, t_ps *ps)
 	int		i;
 	t_list	*stacka2;
 
-	i = 1;
-	while (countnodes(*stacka) > 3)
-		ps_pb(stacka, stackb, ps);
+	i = 0;
 	threesort(stacka, stackb, ps);
 	stacka2 = *stacka;
-	while (stacka2 != NULL)
+	printlists(*stacka, *stackb);
+	while (*stackb != NULL)
 	{
-		if (*((int *)((*stackb)->content)) < *(int *)(stacka2->content) || (*stackb)->next == NULL)
+		if (*((int *)((*stackb)->content)) < *(int *)(stacka2->content))
+		{
 			pushintopos(stacka, stackb, ps, i);
-		else if ((stacka2)->next != NULL && i++)
-			stacka2 = stacka2->next;
+			i = 0;
+			stacka2 = *stacka;
+		}
 		else if (stacka2->next == NULL)
 		{
 			ps_pa(stacka, stackb, ps);
@@ -64,14 +65,24 @@ void	threesortplus(t_list **stacka, t_list **stackb, t_ps *ps)
 			i = 0;
 			stacka2 = *stacka;
 		}
+		else if ((stacka2)->next != NULL)
+		{
+			stacka2 = stacka2->next;
+			i++;
+		}
 	}
 }
 
 void	smallsort(t_ps *ps, t_list **stacka, t_list **stackb)
 {
+	printlists(*stacka, *stackb);
 	if (countnodes(*stacka) == 3)
 		threesort(stacka, stackb, ps);
 	else
+	{
+		while (countnodes(*stacka) > 3)
+			ps_pb(stacka, stackb, ps);
 		threesortplus(stacka, stackb, ps);
+	}
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:11:36 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/14 14:39:38 by ghwa             ###   ########.fr       */
+/*   Updated: 2023/12/19 17:43:09 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int	main(int argc, char **argv)
 	else
 		push_quadrants(&ps, &stacka, &stackb);
 	printlists(stacka, stackb);
+	ft_printf("TOTAL STEP: %d", ps.steps);
 	return (0);
 }
