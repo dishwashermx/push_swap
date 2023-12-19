@@ -6,7 +6,7 @@
 #    By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 17:20:07 by ghwa              #+#    #+#              #
-#    Updated: 2023/12/19 17:08:59 by ghwa             ###   ########.fr        #
+#    Updated: 2023/12/19 17:46:48 by ghwa             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,11 +44,11 @@ libft:
 
 clean:
 	rm -f $(OBJECTS)
-	make clean -C $(LIBFT_DIR)
+	# make clean -C $(LIBFT_DIR)
 
 fclean: clean
 	rm -f $(NAME)
-	@make fclean -C ${LIBFT_DIR}
+	# @make fclean -C ${LIBFT_DIR}
 
 re: fclean all
 
