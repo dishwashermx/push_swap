@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:11:52 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/19 17:41:14 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/22 17:18:08 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,9 @@ int	*bubblesort(t_ps *ps)
 	return (arr);
 }
 
-void	add_ops(char *str)
+void	add_ops(char *str, t_ps *ps)
 {
-	ft_printf("%s ", str);
+	ft_putstr_fd(str, ps->fd);
+	ft_putstr_fd(" ", ps->fd);
 	return ;
 }

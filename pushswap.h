@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:05:21 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/19 17:39:23 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/22 17:15:57 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <libc.h>
 # include "../libft/inc/libft.h"
 
 typedef struct s_ps {
@@ -26,6 +27,7 @@ typedef struct s_ps {
 	int		*chunklets;
 	int		steps;
 	char	**ops;
+	int		fd;
 }	t_ps;
 
 int		initall(t_ps *ps, int argc, char **argv);
@@ -36,7 +38,7 @@ void	printlists(t_list *stacka, t_list *stackb);
 t_list	*push_chunks(t_list **stacka, t_list **stackb, t_ps *ps, int chunks);
 int		*bubblesort(t_ps *ps);
 int		countnodes(t_list *stack);
-void	add_ops(char *str);
+void	add_ops(char *str, t_ps *ps);
 void	smallsort(t_ps *ps, t_list **stacka, t_list **stackb);
 void	threesort(t_list **stacka, t_list **stackb, t_ps *ps);
 void	fivesort(t_list **stacka, t_list **stackb, t_ps *ps);
@@ -44,6 +46,7 @@ void	fivepushintopos(t_list **stacka, t_list **stackb, t_ps *ps, int pos);
 void	freeall(t_list **stacka, t_list**stackb, t_ps *ps);
 int		checksorted(t_list **stack);
 void	bigsort(t_list **stacka, t_list **stackb, t_ps *ps);
+t_list	*largestmodule(t_list *stack);
 
 void	ps_donothing(t_list **stack);
 t_list	*ps_swap(t_list **stack);

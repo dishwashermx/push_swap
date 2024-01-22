@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 17:13:40 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/19 17:36:26 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/22 15:31:22 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,18 @@ void	ps_donothing(t_list **stack)
 	if (head->next != NULL)
 		head = head->next;
 	return ;
+}
+
+t_list	*largestmodule(t_list *stack)
+{
+	t_list	*largest;
+
+	largest = stack;
+	while (stack != NULL)
+	{
+		if (*(int *)largest->content < *(int *)stack->content)
+			largest = stack;
+		stack = stack->next;
+	}
+	return (largest);
 }

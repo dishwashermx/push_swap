@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:55:09 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/14 11:36:31 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/22 17:36:07 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@ void	set_chunks(t_ps *ps, int chunks)
 	j = 0;
 	arr = bubblesort(ps);
 	chunksize = ps->itemcount / chunks;
-	printf("chunksize = %d\n", chunksize);
 	while (i < ps->itemcount)
 	{
 		if (i % chunksize == 0 && j < (chunks - 1))
 		{
 			ps->chunklets[j] = arr[i + 1];
-			printf("chunk %d is %d\n", j, i + 1);
 			j++;
 		}
 		i++;
@@ -50,15 +48,25 @@ t_list	*push_chunks(t_list **stacka, t_list **stackb, t_ps *ps, int chunks)
 	{
 		if (countnodes(*stacka) == 3)
 			return (*stacka);
-		if (*((int *)((*stacka)->content)) <= ps->chunklets[i] \
-		|| (*stacka)->next == NULL)
+		if (*((int *)((*stacka)->content)) <= ps->chunklets[i])
+			ps_pb(stacka, stackb, ps);
+		if (*((int *)((*stacka)->content)) <= ps->chunklets[i + 1])
 		{
 			ps_pb(stacka, stackb, ps);
+			if (countnodes(*stackb) > 1)
+				ps_rb(stacka, stackb, ps);
 		}
-		else if ((*stacka)->next != NULL && j++)
+		else if ((*stacka)->next != NULL)
+		{
+			j++;
 			ps_ra(stacka, stackb, ps);
-		if (j == countnodes(*stacka) && i++ < chunks)
+		}
+		printf("end\ni: %d, j: %d, nodes: %d\n", i, j, countnodes(*stacka));
+		if (j == countnodes(*stacka) && i < chunks)
+		{
+			i = i + 2;
 			j = 0;
+		}
 	}
 	return (*stacka);
 }

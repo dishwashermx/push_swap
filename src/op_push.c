@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:58:18 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/13 11:31:54 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/22 17:16:10 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_list	*ps_push(t_list **stacki, t_list **stacko)
 t_list	*ps_pb(t_list **stacka, t_list **stackb, t_ps *ps)
 {
 	ps_push(stacka, stackb);
-	add_ops("pb");
+	add_ops("pb", ps);
 	ps->steps++;
 	return (*stacka);
 }
@@ -39,7 +39,7 @@ t_list	*ps_pb(t_list **stacka, t_list **stackb, t_ps *ps)
 t_list	*ps_pa(t_list **stacka, t_list **stackb, t_ps *ps)
 {
 	ps_push(stackb, stacka);
-	add_ops("pa");
+	add_ops("pa", ps);
 	ps->steps++;
 	return (*stacka);
 }

@@ -6,7 +6,7 @@
 #    By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 17:20:07 by ghwa              #+#    #+#              #
-#    Updated: 2023/12/19 17:46:48 by ghwa             ###   ########.fr        #
+#    Updated: 2024/01/22 10:39:25 by ghwa             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CFILES = pushswap.c \
 	  push_utils.c misc_utils.c \
 	  presort.c smallsort.c bigsort.c\
 	  op_swap.c op_push.c op_rotate.c op_reverse_rotate.c
-LIBFT_DIR = ../libft/inc
+LIBFT_DIR = ../libft/src
 SOURCES = $(addprefix src/, $(CFILES))
 OBJECTS = ${SOURCES:.c=.o}
 FLAGS = -Wall -Werror -Wextra -g3 -ggdb -fsanitize=address

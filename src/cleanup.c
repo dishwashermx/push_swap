@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:37:23 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/20 11:37:23 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/22 17:19:13 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	freeall(t_list **stacka, t_list**stackb, t_ps *ps)
 	free (ps->chunklets);
 	ps->iargv = NULL;
 	ps->chunklets = NULL;
+	close (ps->fd);
 	return ;
 }
