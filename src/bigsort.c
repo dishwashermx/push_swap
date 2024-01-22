@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 18:54:16 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/22 16:53:22 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/22 18:06:14 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void	bigsort(t_list **stacka, t_list **stackb, t_ps *ps)
 	int		pos;
 
 	if (countnodes(*stacka) == 100)
-		chunks = 4;
+		chunks = 6;
 	else
 		chunks = 12;
 	push_chunks(stacka, stackb, ps, chunks);
