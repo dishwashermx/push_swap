@@ -61,11 +61,27 @@ int	checkrepeat(t_ps *ps)
 	return (1);
 }
 
+int	checkcount(t_ps *ps)
+{
+	if (ps->itemcount == 3)
+		return (1);
+	else if (ps->itemcount == 5)
+		return (1);
+	else if (ps->itemcount == 100)
+		return (1);
+	else if (ps->itemcount == 500)
+		return (1);
+	else
+		return (error("Please input 3, 5, 100 or 500 arguments"));
+}
+
 int	checkinputs(t_ps *ps)
 {
 	if (checknumber(ps) == 0)
 		return (0);
 	if (checkrepeat(ps) == 0)
+		return (0);
+	if (checkcount(ps) == 0)
 		return (0);
 	return (1);
 }

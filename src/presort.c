@@ -12,65 +12,53 @@
 
 #include "./../pushswap.h"
 
-void	set_quadrants(t_ps *ps)
+void	set_chunks(t_ps *ps, int chunks)
 {
 	int	*arr;
-	int	quarter;
+	int	chunksize;
 	int	i;
 	int	j;
 
 	i = 1;
 	j = 0;
 	arr = bubblesort(ps);
-	quarter = ps->itemcount / 4;
+	chunksize = ps->itemcount / chunks;
+	printf("chunksize = %d\n", chunksize);
 	while (i < ps->itemcount)
 	{
-		if (i % quarter == 0 && j < 3)
+		if (i % chunksize == 0 && j < (chunks - 1))
 		{
-			ps->quadrets[j] = arr[i + 1];
+			ps->chunklets[j] = arr[i + 1];
+			printf("chunk %d is %d\n", j, i + 1);
 			j++;
 		}
 		i++;
 	}
-	ps->quadrets[j] = arr[i - 1];
+	ps->chunklets[j] = arr[i - 1];
+	free (arr);
 }
 
-void	rotatebothquestionmark(t_list **stacka, t_list **stackb, t_ps *ps)
-{
-	t_list	*stackb2;
-
-	stackb2 = *stackb;
-	if (stackb2->next == NULL || stackb2 == NULL)
-	{
-		ps_ra(stacka, stackb, ps);
-		return ;
-	}
-	stackb2 = stackb2->next;
-	if (*((int *)((*stackb)->content)) < *(int *)(stackb2->content))
-		ps_rr(stacka, stackb, ps);
-	else
-		ps_ra(stacka, stackb, ps);
-	return ;
-}
-
-t_list	*push_quadrants(t_ps *ps, t_list **stacka, t_list **stackb)
+t_list	*push_chunks(t_list **stacka, t_list **stackb, t_ps *ps, int chunks)
 {
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	set_quadrants(ps);
+	set_chunks(ps, chunks);
 	while (j < countnodes(*stacka))
 	{
-		if (*((int *)((*stacka)->content)) <= ps->quadrets[i] \
+		if (countnodes(*stacka) == 3)
+			return (*stacka);
+		if (*((int *)((*stacka)->content)) <= ps->chunklets[i] \
 		|| (*stacka)->next == NULL)
+		{
 			ps_pb(stacka, stackb, ps);
+		}
 		else if ((*stacka)->next != NULL && j++)
-			rotatebothquestionmark(stacka, stackb, ps);
-		if (j == countnodes(*stacka) && i++ < 4)
+			ps_ra(stacka, stackb, ps);
+		if (j == countnodes(*stacka) && i++ < chunks)
 			j = 0;
 	}
-	ft_printf("\nTotal Steps: %d\n", ps->steps);
 	return (*stacka);
 }

@@ -11,16 +11,15 @@
 # **************************************************************************** #
 
 CFILES = pushswap.c \
-	  checks.c \
-	  initall.c \
+	  initall.c cleanup.c checks.c \
 	  push_utils.c misc_utils.c \
-	  presort.c smallsort.c \
+	  presort.c smallsort.c bigsort.c\
 	  op_swap.c op_push.c op_rotate.c op_reverse_rotate.c
-LIBFT_DIR = ../libft/src
+LIBFT_DIR = ../libft/inc
 SOURCES = $(addprefix src/, $(CFILES))
 OBJECTS = ${SOURCES:.c=.o}
 FLAGS = -Wall -Werror -Wextra -g3 -ggdb -fsanitize=address
-NAME = push_swap
+NAME = pushswap
 CC = cc
 
 LIBFT		= $(LIBFT_DIR)/libft.a
@@ -34,7 +33,7 @@ $(LIBFT):
 	@make -C ${LIBFT_DIR}
 
 $(NAME): $(LIBFT) $(OBJECTS)
-	CC $(FLAGS) $(FLAGS) $(OBJECTS) ../libft/inc/libft.a -o $(NAME)
+	$(CC) $(FLAGS) $(FLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(FLAGS) -c -o $@ $<
@@ -48,7 +47,8 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	# @make fclean -C ${LIBFT_DIR}
+	rm -f $(LIBFT)
+	@make fclean -C ${LIBFT_DIR}
 
 re: fclean all
 

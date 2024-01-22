@@ -22,14 +22,15 @@ int	main(int argc, char **argv)
 	stackb = NULL;
 	initall(&ps, argc, argv);
 	if (checkinputs(&ps) == 0)
-		return (0);
+		return ((void)free(ps.iargv), 0);
 	initlinkedlist(&ps, &stacka);
 	printlists(stacka, stackb);
-	if (countnodes(stacka) <= 5)
+	if (countnodes(stacka) <= 10)
 		smallsort(&ps, &stacka, &stackb);
 	else
-		push_quadrants(&ps, &stacka, &stackb);
+		bigsort(&stacka, &stackb, &ps);
 	printlists(stacka, stackb);
-	ft_printf("TOTAL STEP: %d", ps.steps);
+	ft_printf("TOTAL STEPS: %d\n", ps.steps);
+	freeall(&stacka, &stackb, &ps);
 	return (0);
 }

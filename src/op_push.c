@@ -43,10 +43,3 @@ t_list	*ps_pa(t_list **stacka, t_list **stackb, t_ps *ps)
 	ps->steps++;
 	return (*stacka);
 }
-
-void	ps_donothing(t_list **stack)
-{
-	t_list	*head;
-
-	head = *stack;
-}
