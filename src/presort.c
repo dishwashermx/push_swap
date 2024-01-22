@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:55:09 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/22 17:36:07 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/22 17:52:49 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,30 +42,25 @@ t_list	*push_chunks(t_list **stacka, t_list **stackb, t_ps *ps, int chunks)
 	int		j;
 
 	i = 0;
-	j = 0;
+	j = -1;
 	set_chunks(ps, chunks);
-	while (j < countnodes(*stacka))
+	while (countnodes(*stacka) > 3)
 	{
-		if (countnodes(*stacka) == 3)
-			return (*stacka);
 		if (*((int *)((*stacka)->content)) <= ps->chunklets[i])
 			ps_pb(stacka, stackb, ps);
-		if (*((int *)((*stacka)->content)) <= ps->chunklets[i + 1])
+		else if (*((int *)((*stacka)->content)) <= ps->chunklets[i + 1])
 		{
 			ps_pb(stacka, stackb, ps);
-			if (countnodes(*stackb) > 1)
-				ps_rb(stacka, stackb, ps);
+			ps_rb(stacka, stackb, ps);
 		}
-		else if ((*stacka)->next != NULL)
+		else if ((*stacka)->next != NULL && ++j)
 		{
-			j++;
 			ps_ra(stacka, stackb, ps);
 		}
-		printf("end\ni: %d, j: %d, nodes: %d\n", i, j, countnodes(*stacka));
 		if (j == countnodes(*stacka) && i < chunks)
 		{
 			i = i + 2;
-			j = 0;
+			j = -1;
 		}
 	}
 	return (*stacka);

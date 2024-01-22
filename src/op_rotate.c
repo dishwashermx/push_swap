@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:05:20 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/22 17:16:39 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/22 17:49:26 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_list	*ps_rotate(t_list **stack)
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		error("Insufficient Arguments for Rotate");
 		return (*stack);
 	}
 	node = *stack;
