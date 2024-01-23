@@ -6,18 +6,11 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:17:34 by ghwa              #+#    #+#             */
-/*   Updated: 2023/12/08 14:04:05 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/23 13:19:27 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../pushswap.h"
-
-int	error(char *error)
-{
-	ft_printf("ERROR\n");
-	ft_printf("%s\n", error);
-	return (0);
-}
 
 int	checknumber(t_ps *ps)
 {
@@ -75,13 +68,29 @@ int	checkcount(t_ps *ps)
 		return (error("Please input 3, 5, 100 or 500 arguments"));
 }
 
+int	checksorted(t_ps *ps)
+{
+	int	count;
+
+	count = 0;
+	while (count < ps->itemcount - 1)
+	{
+		if (ps->iargv[count] >= ps->iargv[count + 1])
+			return (1);
+		count++;
+	}
+	return (0);
+}
+
 int	checkinputs(t_ps *ps)
 {
 	if (checknumber(ps) == 0)
 		return (0);
 	if (checkrepeat(ps) == 0)
 		return (0);
-	if (checkcount(ps) == 0)
+	if (checksorted(ps) == 0)
 		return (0);
+	// if (checkcount(ps) == 0)
+	// 	return (0);
 	return (1);
 }

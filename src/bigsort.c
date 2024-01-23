@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 18:54:16 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/22 18:06:14 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/23 13:28:40 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	countpos(t_list **stacka, t_list **stackb, t_list *lowest, int code)
 	}
 	if (code == 1)
 		pos++;
-	// printf("pos is %d\n", pos);
 	return (pos);
 }
 
@@ -94,11 +93,7 @@ void	pushback(t_list **stacka, t_list **stackb, t_ps *ps, int pos)
 {
 	int	i;
 
-	if (pos == countnodes(*stacka))
-	{
-		ps_pa(stacka, stackb, ps);
-	}
-	else if (pos <= (countnodes(*stacka) + 1) / 2)
+	if (pos <= (countnodes(*stacka) + 1) / 2)
 	{
 		i = 0;
 		while (i < pos)
@@ -123,15 +118,16 @@ void	bigsort(t_list **stacka, t_list **stackb, t_ps *ps)
 	int		chunks;
 	int		pos;
 
-	if (countnodes(*stacka) == 100)
+	if (countnodes(*stacka) <= 200)
 		chunks = 6;
 	else
-		chunks = 12;
+		chunks = 14;
 	push_chunks(stacka, stackb, ps, chunks);
 	smallsort(ps, stacka, stackb);
 	while ((*stackb) != NULL)
 	{
-		// printlists(*stacka, *stackb);
+		if (*(int *)ft_lstlast(*stackb)->content > *(int *)(*stackb)->content)
+			ps_rrb(stacka, stackb, ps);
 		pos = findpos(stacka, stackb, 0);
 		pushintopos(stacka, stackb, ps, pos);
 	}

@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:11:52 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/22 17:18:08 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/23 11:47:19 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	countnodes(t_list *stack)
 		count++;
 		current = current->next;
 	}
-
 	return (count);
 }
 
@@ -83,4 +82,24 @@ void	add_ops(char *str, t_ps *ps)
 	ft_putstr_fd(str, ps->fd);
 	ft_putstr_fd(" ", ps->fd);
 	return ;
+}
+
+void	printsteps(t_ps *ps)
+{
+	char	*gnl;
+	int		i;
+
+	i = 0;
+	ps->steps = 0;
+	close (ps->fd);
+	ps->fd = open("./temp", O_RDONLY);
+	gnl = get_next_line(ps->fd);
+	while (gnl[i] != '\0')
+	{
+		if (gnl[i] == ' ')
+			ps->steps++;
+		i++;
+	}
+	ps->steps++;
+	ft_printf("TOTAL STEPS: %d", ps->steps);
 }

@@ -6,13 +6,20 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:37:23 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/22 17:19:13 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/23 13:29:40 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pushswap.h"
 
-void freelst(t_list **stack)
+int	error(char *error)
+{
+	ft_printf("ERROR\n");
+	ft_printf("%s\n", error);
+	return (0);
+}
+
+void	freelst(t_list **stack)
 {
 	t_list	*current;
 	t_list	*next;
@@ -36,4 +43,49 @@ void	freeall(t_list **stacka, t_list**stackb, t_ps *ps)
 	ps->chunklets = NULL;
 	close (ps->fd);
 	return ;
+}
+
+void	replace(char **str, t_ps *ps)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (ft_strncmp(str[i], "rb", 2) == 0 && \
+		ft_strncmp(str[i + 1], "ra", 2) == 0)
+		{
+			ft_putstr_fd("rr ", ps->fd);
+			i++;
+		}
+		else if (ft_strncmp(str[i], "rrb", 3) == 0 && \
+		ft_strncmp(str[i + 1], "rra", 3) == 0)
+		{
+			ft_putstr_fd("rrr ", ps->fd);
+			i++;
+		}
+		else
+		{
+			ft_putstr_fd(str[i], ps->fd);
+			ft_putchar_fd(' ', ps->fd);
+		}
+		i++;
+	}
+	ft_putstr_fd(str[i], ps->fd);
+}
+
+void	optops(t_ps *ps)
+{
+	char	*gnl;
+	char	**str;
+
+	close (ps->fd);
+	ps->fd = open("./temp", O_RDONLY);
+	gnl = get_next_line(ps->fd);
+	str = ft_split(gnl, ' ');
+	close (ps->fd);
+	ps->fd = open("./result", O_WRONLY | O_CREAT | O_TRUNC, 0666);
+	replace(str, ps);
+	free (gnl);
+	free (str);
 }

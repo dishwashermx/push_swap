@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:23:56 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/22 17:12:33 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/23 11:30:52 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	initall(t_ps *ps, int argc, char **argv)
 	ps->iargv = malloc(ps->itemcount * sizeof(int) + 1);
 	ps->chunklets = malloc(20 * sizeof(int));
 	ps->steps = 0;
-	ps->fd = open("../result", O_WRONLY | O_CREAT , 0666);
+	ps->fd = open("./temp", O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	return (1);
 }
 

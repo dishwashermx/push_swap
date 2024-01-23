@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:55:09 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/22 17:52:49 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/23 11:47:40 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,7 @@ t_list	*push_chunks(t_list **stacka, t_list **stackb, t_ps *ps, int chunks)
 			ps_rb(stacka, stackb, ps);
 		}
 		else if ((*stacka)->next != NULL && ++j)
-		{
 			ps_ra(stacka, stackb, ps);
-		}
 		if (j == countnodes(*stacka) && i < chunks)
 		{
 			i = i + 2;
