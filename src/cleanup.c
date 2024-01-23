@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:37:23 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/23 13:29:40 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/23 14:30:01 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	freeall(t_list **stacka, t_list**stackb, t_ps *ps)
 	freelst(stacka);
 	freelst(stackb);
 	free (ps->iargv);
-	free (ps->chunklets);
+	if (ps->itemcount > 50)
+		free (ps->chunklets);
 	ps->iargv = NULL;
 	ps->chunklets = NULL;
 	close (ps->fd);
@@ -78,7 +79,9 @@ void	optops(t_ps *ps)
 {
 	char	*gnl;
 	char	**str;
+	int		i;
 
+	i = 0;
 	close (ps->fd);
 	ps->fd = open("./temp", O_RDONLY);
 	gnl = get_next_line(ps->fd);
@@ -87,5 +90,9 @@ void	optops(t_ps *ps)
 	ps->fd = open("./result", O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	replace(str, ps);
 	free (gnl);
-	free (str);
+	while (str[i] != NULL)
+	{
+		free (str[i]);
+		i++;
+	}
 }

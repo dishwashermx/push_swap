@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:11:52 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/23 11:47:19 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/23 14:47:52 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,13 @@ void	printsteps(t_ps *ps)
 	close (ps->fd);
 	ps->fd = open("./temp", O_RDONLY);
 	gnl = get_next_line(ps->fd);
+	close (ps->fd);
 	while (gnl[i] != '\0')
 	{
 		if (gnl[i] == ' ')
 			ps->steps++;
 		i++;
 	}
-	ps->steps++;
 	ft_printf("TOTAL STEPS: %d", ps->steps);
+	free (gnl);
 }

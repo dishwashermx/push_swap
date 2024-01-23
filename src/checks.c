@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:17:34 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/23 13:19:27 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/23 13:55:56 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,5 @@ int	checkinputs(t_ps *ps)
 		return (0);
 	if (checksorted(ps) == 0)
 		return (0);
-	// if (checkcount(ps) == 0)
-	// 	return (0);
 	return (1);
 }
