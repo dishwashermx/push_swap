@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:11:36 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/24 22:45:53 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/25 00:27:59 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int	main(int argc, char **argv)
 	stackb = NULL;
 	initall(&ps, argc, argv);
 	if (checkinputs(&ps, 0) == 0)
-		return (freeall(&stacka, &stackb, &ps, 0));
+		return (freeall(&stacka, &stackb, &ps));
 	initlinkedlist(&ps, &stacka);
 	if (countnodes(stacka) <= 50)
 		smallsort(&ps, &stacka, &stackb);
 	else
 		bigsort(&stacka, &stackb, &ps);
 	optops(&ps);
-	freeall(&stacka, &stackb, &ps, 1);
+	freeall(&stacka, &stackb, &ps);
 	return (0);
 }

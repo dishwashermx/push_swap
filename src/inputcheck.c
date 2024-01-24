@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:17:34 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/24 10:34:24 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/25 00:29:10 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int	checknumber(t_ps *ps)
 	{
 		if (ft_atoi(ps->argv[i]) == 0 && ft_strncmp(ps->argv[i], "0", \
 		ft_strlen(ps->argv[i])) != 0)
-			return (error("Argument is not a number"));
+			return (error);
 		if (ft_atol(ps->argv[i]) > 2147483647 \
 		|| ft_atol(ps->argv[i]) < -2147483648)
-			return (error("Argument is out of bounds"));
+			return (error);
 		ps->iargv[i - 1] = ft_atoi(ps->argv[i]);
 		i++;
 	}
@@ -47,25 +47,11 @@ int	checkrepeat(t_ps *ps)
 		while (++count < ps->itemcount)
 		{
 			if (anchor == ps->iargv[count])
-				return (error("Repeated Number"));
+				return (error);
 		}
 		head++;
 	}
 	return (1);
-}
-
-int	checkcount(t_ps *ps)
-{
-	if (ps->itemcount == 3)
-		return (1);
-	else if (ps->itemcount == 5)
-		return (1);
-	else if (ps->itemcount == 100)
-		return (1);
-	else if (ps->itemcount == 500)
-		return (1);
-	else
-		return (error("Please input 3, 5, 100 or 500 arguments"));
 }
 
 int	checksorted(t_ps *ps)

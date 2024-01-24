@@ -6,13 +6,13 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:36:16 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/24 14:14:29 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/25 00:21:00 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pushswap.h"
 
-int	threesorted(t_list **stack)
+int	stacksorted(t_list **stack)
 {
 	t_list	*first;
 	t_list	*second;
@@ -35,7 +35,7 @@ void	threesort(t_list **stacka, t_list **stackb, t_ps *ps)
 	t_list	*second;
 	t_list	*third;
 
-	if (threesorted(stacka) == 0)
+	if (stacksorted(stacka) == 0)
 		return ;
 	first = *stacka;
 	second = (*stacka)->next;
