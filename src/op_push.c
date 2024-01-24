@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:58:18 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/23 10:25:12 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/24 23:56:03 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_list	*ps_push(t_list **stacki, t_list **stacko)
 
 	if (*stacki == NULL)
 	{
-		error("Insufficient Arguments for Push");
 		return (*stacki);
 	}
 	node = *stacki;

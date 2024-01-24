@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:00:33 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/24 15:15:10 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/24 23:49:09 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,20 @@
 int	main(int argc, char **argv)
 {
 	t_ps	ps;
+	t_list	*stacka;
+	t_list	*stackb;
 
+	stacka = NULL;
+	stackb = NULL;
 	initall(&ps, argc, argv);
 	if (checkinputs(&ps, 1) == 0)
-		return ((void)free(ps.iargv), 0);
-	getinput(&ps);
+		return (freeall(&stacka, &stackb, &ps));
+	initlinkedlist(&ps, &stacka);
+	getinput(&ps, &stacka, &stackb);
+	freeall(&stacka, &stackb, &ps);
 }
 
-int	getinput(t_ps *ps)
+int	getinput(t_ps *ps, t_list **stacka, t_list **stackb)
 {
 	char	*temp;
 
@@ -30,15 +36,10 @@ int	getinput(t_ps *ps)
 	while (1)
 	{
 		temp = get_next_line(0);
-		if (checkcmd(temp) == 0)
-			return (error((char *)(NULL)));
+		if (checkcmd1(stacka, stackb, ps, temp) == 0 && \
+		checkcmd2(stacka, stackb, ps, temp) == 0)
+			return ((void)free (temp), (error((char *)(NULL))));
 		free (temp);
 	}
-	return (0);
-}
-
-int	checkcmd(char *cmd)
-{
-	if (strncmp(cmd, "rr", 2) == 0 || strncmp(cmd, "rr", 2) == 0)
 	return (0);
 }

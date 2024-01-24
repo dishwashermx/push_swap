@@ -6,7 +6,7 @@
 #    By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 17:20:07 by ghwa              #+#    #+#              #
-#    Updated: 2024/01/24 13:21:46 by ghwa             ###   ########.fr        #
+#    Updated: 2024/01/24 22:33:17 by ghwa             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,10 @@ CC = cc
 NAME = push_swap
 BONUS = checker
 
-PUSHSWAP_C = ./src/pushswap.c
-PUSHSWAP_O = ./src/pushswap.o
-CHECKER_C = ./src/checker.c
-CHECKER_O = ./src/checker.o
+PUSHSWAP_C = src/pushswap.c
+PUSHSWAP_O = src/pushswap.o
+CHECKER_C = src/checker.c
+CHECKER_O = src/checker.o
 
 LIBFT_DIR = ../libft/src
 LIBFT		= $(LIBFT_DIR)/libft.a

@@ -6,23 +6,19 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 18:54:16 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/24 13:13:01 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/24 22:30:35 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pushswap.h"
 
-int	countpos(t_list **stacka, t_list **stackb, t_list *lowest, int code)
+int	countpos(t_list **stacka, t_list *lowest, int code)
 {
 	t_list	*stacka2;
-	t_list	*stackb2;
-	t_list	*big;
 	int		pos;
 
 	pos = 0;
 	stacka2 = *stacka;
-	stackb2 = *stackb;
-	big = largestmodule(stacka2);
 	while (*(int *)lowest->content != *(int *)stacka2->content && pos < 500)
 	{
 		stacka2 = stacka2->next;
@@ -44,7 +40,7 @@ int	findpos(t_list **stacka, t_list **stackb, int code)
 	stackb2 = *stackb;
 	lowest = largestmodule(stacka2);
 	if (code == 1)
-		return (countpos(stacka, stackb, lowest, 1));
+		return (countpos(stacka, lowest, 1));
 	while (stacka2 != NULL)
 	{
 		if (*(int *)stackb2->content < *(int *)stacka2->content)
@@ -56,8 +52,8 @@ int	findpos(t_list **stacka, t_list **stackb, int code)
 		stacka2 = stacka2->next;
 	}
 	if (*(int *)lowest->content < *(int *)stackb2->content)
-		return (countpos(stacka, stackb, lowest, 1));
-	return (countpos(stacka, stackb, lowest, 0));
+		return (countpos(stacka, lowest, 1));
+	return (countpos(stacka, lowest, 0));
 }
 
 void	pushintopos(t_list **stacka, t_list **stackb, t_ps *ps, int pos)

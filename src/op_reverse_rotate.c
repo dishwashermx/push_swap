@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:05:20 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/22 17:16:26 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/24 23:56:11 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_list	*ps_reverse_rotate(t_list **stack)
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		error("Insufficient Arguments for Reverse Rotate");
 		return (*stack);
 	}
 	current = *stack;

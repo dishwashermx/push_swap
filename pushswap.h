@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:05:21 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/24 15:12:06 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/24 23:43:53 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
-# include <libc.h>
 # include "../libft/inc/libft.h"
 
 typedef struct s_ps
@@ -44,19 +43,20 @@ void	add_ops(char *str, t_ps *ps);
 void	smallsort(t_ps *ps, t_list **stacka, t_list **stackb);
 void	threesort(t_list **stacka, t_list **stackb, t_ps *ps);
 void	fivesort(t_list **stacka, t_list **stackb, t_ps *ps);
-void	freeall(t_list **stacka, t_list**stackb, t_ps *ps);
+int		freeall(t_list **stacka, t_list**stackb, t_ps *ps);
 int		checksorted(t_ps *ps);
 void	pushback(t_list **stacka, t_list **stackb, t_ps *ps, int pos);
 void	pushintopos(t_list **stacka, t_list **stackb, t_ps *ps, int pos);
 int		findpos(t_list **stacka, t_list **stackb, int code);
-int		countpos(t_list **stacka, t_list **stackb, t_list *lowest, int code);
+int		countpos(t_list **stacka, t_list *lowest, int code);
 void	bigsort(t_list **stacka, t_list **stackb, t_ps *ps);
 t_list	*largestmodule(t_list *stack);
 void	optops(t_ps *ps);
 void	printsteps(t_ps *ps);
 
-int		getinput(t_ps *ps);
-int		checkcmd(char *cmd);
+int		getinput(t_ps *ps, t_list **stacka, t_list **stackb);
+int		checkcmd1(t_list **stacka, t_list **stackb, t_ps *ps, char *cmd);
+int		checkcmd2(t_list **stacka, t_list **stackb, t_ps *ps, char *cmd);
 
 void	ps_donothing(t_list **stack);
 t_list	*ps_swap(t_list **stack);

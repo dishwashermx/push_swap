@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:25:14 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/22 17:16:49 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/24 23:56:21 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_list	*ps_swap(t_list **stack)
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		return (*stack);
-		error("Insufficient Arguments for Swap");
 	}
 	first = *stack;
 	second = (*stack)->next;

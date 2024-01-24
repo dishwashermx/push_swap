@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:37:23 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/24 15:14:42 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/24 23:42:55 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,16 @@ void	freelst(t_list **stack)
 	}
 }
 
-void	freeall(t_list **stacka, t_list**stackb, t_ps *ps)
+int	freeall(t_list **stacka, t_list**stackb, t_ps *ps)
 {
 	freelst(stacka);
 	freelst(stackb);
+	close (ps->fd);
 	free (ps->iargv);
-	if (ps->itemcount > 50)
-		free (ps->chunklets);
+	free (ps->chunklets);
 	ps->iargv = NULL;
 	ps->chunklets = NULL;
-	close (ps->fd);
-	return ;
+	return (0);
 }
 
 void	replace(char **str, t_ps *ps)
