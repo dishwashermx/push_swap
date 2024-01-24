@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:05:21 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/25 00:30:17 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/25 00:59:32 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_ps
 int		initall(t_ps *ps, int argc, char **argv);
 int		checkinputs(t_ps *ps, int code);
 void	initlinkedlist(t_ps *ps, t_list **stacka);
-int		error(void);
+int		error(int code);
 void	printlists(t_list *stacka, t_list *stackb);
 t_list	*push_chunks(t_list **stacka, t_list **stackb, t_ps *ps, int chunks);
 int		*bubblesort(t_ps *ps);

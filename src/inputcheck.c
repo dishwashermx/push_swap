@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:17:34 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/25 00:29:10 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/25 01:08:02 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,16 @@ int	checknumber(t_ps *ps)
 		return (0);
 	while (ps->argv[i] != NULL)
 	{
+		if (ft_isdigitarray(ps->argv) == 0)
+		{
+			return (error(0));
+		}
 		if (ft_atoi(ps->argv[i]) == 0 && ft_strncmp(ps->argv[i], "0", \
 		ft_strlen(ps->argv[i])) != 0)
-			return (error);
+			return (error(0));
 		if (ft_atol(ps->argv[i]) > 2147483647 \
 		|| ft_atol(ps->argv[i]) < -2147483648)
-			return (error);
+			return (error(0));
 		ps->iargv[i - 1] = ft_atoi(ps->argv[i]);
 		i++;
 	}
@@ -47,7 +51,7 @@ int	checkrepeat(t_ps *ps)
 		while (++count < ps->itemcount)
 		{
 			if (anchor == ps->iargv[count])
-				return (error);
+				return (error(0));
 		}
 		head++;
 	}
@@ -70,6 +74,8 @@ int	checksorted(t_ps *ps)
 
 int	checkinputs(t_ps *ps, int code)
 {
+	if (ps->argv[1] == NULL)
+		return (0);
 	if (checknumber(ps) == 0)
 		return (0);
 	if (checkrepeat(ps) == 0)

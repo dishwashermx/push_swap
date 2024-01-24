@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:00:33 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/25 00:28:46 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/25 01:10:03 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	main(int argc, char **argv)
 	if (checkinputs(&ps, 1) == 0)
 		return (freeall(&stacka, &stackb, &ps));
 	initlinkedlist(&ps, &stacka);
-	getinput(&ps, &stacka, &stackb);
+	if (getinput(&ps, &stacka, &stackb) == 0)
+		return (freeall(&stacka, &stackb, &ps));
 	if (stacksorted(&stacka) == 1 || countnodes(stackb) > 0)
 		ft_printf("KO\n");
 	else
@@ -41,11 +42,11 @@ int	getinput(t_ps *ps, t_list **stacka, t_list **stackb)
 	{
 		temp = get_next_line(0);
 		if (temp == NULL)
-			return ((void)free (temp), 0);
+			return ((void)free (temp), 1);
 		if (checkcmd1(stacka, stackb, ps, temp) == 0 && \
 		checkcmd2(stacka, stackb, ps, temp) == 0)
-			return ((void)free (temp), error);
+			return ((void)free (temp), error(0));
 		free (temp);
 	}
-	return (0);
+	return (1);
 }

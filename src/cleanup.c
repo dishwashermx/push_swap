@@ -6,15 +6,16 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:37:23 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/25 00:28:25 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/25 00:59:12 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pushswap.h"
 
-int	error(void)
+int	error(int code)
 {
-	ft_printf("Error\n");
+	if (code == 0)
+		ft_printf("Error\n");
 	return (0);
 }
 
