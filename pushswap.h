@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:05:21 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/23 13:01:41 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/24 10:34:35 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ typedef struct s_ps
 	int		steps;
 	char	**ops;
 	int		fd;
+	char	*input;
 }	t_ps;
 
 int		initall(t_ps *ps, int argc, char **argv);
-int		checkinputs(t_ps *ps);
+int		checkinputs(t_ps *ps, int code);
 void	initlinkedlist(t_ps *ps, t_list **stacka);
 int		error(char *error);
 void	printlists(t_list *stacka, t_list *stackb);
@@ -53,6 +54,8 @@ void	bigsort(t_list **stacka, t_list **stackb, t_ps *ps);
 t_list	*largestmodule(t_list *stack);
 void	optops(t_ps *ps);
 void	printsteps(t_ps *ps);
+
+int		getinput(t_ps *ps);
 
 void	ps_donothing(t_list **stack);
 t_list	*ps_swap(t_list **stack);

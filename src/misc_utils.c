@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:11:52 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/23 14:47:52 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/24 12:32:07 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	printsteps(t_ps *ps)
 	i = 0;
 	ps->steps = 0;
 	close (ps->fd);
-	ps->fd = open("./temp", O_RDONLY);
+	ps->fd = open("./result", O_RDONLY);
 	gnl = get_next_line(ps->fd);
 	close (ps->fd);
 	while (gnl[i] != '\0')

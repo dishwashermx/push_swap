@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checks.c                                           :+:      :+:    :+:   */
+/*   inputcheck.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:17:34 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/23 13:55:56 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/24 10:34:24 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,13 @@ int	checksorted(t_ps *ps)
 	return (0);
 }
 
-int	checkinputs(t_ps *ps)
+int	checkinputs(t_ps *ps, int code)
 {
 	if (checknumber(ps) == 0)
 		return (0);
 	if (checkrepeat(ps) == 0)
 		return (0);
-	if (checksorted(ps) == 0)
+	if (checksorted(ps) == 0 && code == 0)
 		return (0);
 	return (1);
 }

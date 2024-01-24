@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:37:23 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/23 14:30:01 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/24 13:44:35 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,28 +51,28 @@ void	replace(char **str, t_ps *ps)
 	int	i;
 
 	i = 0;
+	(void)ps;
 	while (str[i])
 	{
 		if (ft_strncmp(str[i], "rb", 2) == 0 && \
 		ft_strncmp(str[i + 1], "ra", 2) == 0)
 		{
-			ft_putstr_fd("rr ", ps->fd);
+			ft_putstr_fd("rr\n", 1);
 			i++;
 		}
 		else if (ft_strncmp(str[i], "rrb", 3) == 0 && \
 		ft_strncmp(str[i + 1], "rra", 3) == 0)
 		{
-			ft_putstr_fd("rrr ", ps->fd);
+			ft_putstr_fd("rrr\n", 1);
 			i++;
 		}
 		else
 		{
-			ft_putstr_fd(str[i], ps->fd);
-			ft_putchar_fd(' ', ps->fd);
+			ft_putstr_fd(str[i], 1);
+			ft_putchar_fd('\n', 1);
 		}
 		i++;
 	}
-	ft_putstr_fd(str[i], ps->fd);
 }
 
 void	optops(t_ps *ps)
@@ -87,7 +87,6 @@ void	optops(t_ps *ps)
 	gnl = get_next_line(ps->fd);
 	str = ft_split(gnl, ' ');
 	close (ps->fd);
-	ps->fd = open("./result", O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	replace(str, ps);
 	free (gnl);
 	while (str[i] != NULL)

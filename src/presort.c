@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:55:09 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/23 11:47:40 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/24 13:02:14 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,18 @@ void	set_chunks(t_ps *ps, int chunks)
 	free (arr);
 }
 
+void	pushbottom(t_list **stacka, t_list **stackb, t_ps *ps, int i)
+{
+	t_list	*lowest;
+
+	lowest = ft_lstlast(*stacka);
+	if ((*(int *)lowest->content) <= ps->chunklets[i])
+	{
+		ps_rra(stacka, stackb, ps);
+		ps_pb(stacka, stackb, ps);
+	}
+}
+
 t_list	*push_chunks(t_list **stacka, t_list **stackb, t_ps *ps, int chunks)
 {
 	int		i;
@@ -46,6 +58,7 @@ t_list	*push_chunks(t_list **stacka, t_list **stackb, t_ps *ps, int chunks)
 	set_chunks(ps, chunks);
 	while (countnodes(*stacka) > 3)
 	{
+		// pushbottom(stacka, stackb, ps, i);
 		if (*((int *)((*stacka)->content)) <= ps->chunklets[i])
 			ps_pb(stacka, stackb, ps);
 		else if (*((int *)((*stacka)->content)) <= ps->chunklets[i + 1])

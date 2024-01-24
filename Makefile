@@ -6,19 +6,20 @@
 #    By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 17:20:07 by ghwa              #+#    #+#              #
-#    Updated: 2024/01/23 15:15:02 by ghwa             ###   ########.fr        #
+#    Updated: 2024/01/24 13:21:46 by ghwa             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFILES = initall.c cleanup.c checks.c \
+CFILES = initall.c cleanup.c inputcheck.c \
 	push_utils.c misc_utils.c \
 	presort.c smallsort.c bigsort.c\
-	op_swap.c op_push.c op_rotate.c op_reverse_rotate.c
+	op_swap.c op_push.c op_rotate.c op_reverse_rotate.c\
+	checker_utils.c
 SOURCES = $(addprefix src/, $(CFILES))
 OBJECTS = ${SOURCES:.c=.o}
 FLAGS = -Wall -Werror -Wextra -g3 -ggdb -fsanitize=address
 CC = cc
-NAME = pushswap
+NAME = push_swap
 BONUS = checker
 
 PUSHSWAP_C = ./src/pushswap.c
