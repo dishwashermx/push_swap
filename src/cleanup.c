@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:37:23 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/24 13:44:35 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/24 15:14:42 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	error(char *error)
 {
-	ft_printf("ERROR\n");
-	ft_printf("%s\n", error);
+	ft_printf("Error\n");
+	if (error)
+		ft_printf("%s\n", error);
 	return (0);
 }
 
