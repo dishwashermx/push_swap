@@ -6,7 +6,7 @@
 #    By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 17:20:07 by ghwa              #+#    #+#              #
-#    Updated: 2024/01/26 13:17:13 by ghwa             ###   ########.fr        #
+#    Updated: 2024/01/26 13:35:42 by ghwa             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFILES = initall.c cleanup.c inputcheck.c \
 	checker_utils.c
 SOURCES = $(addprefix src/, $(CFILES))
 OBJECTS = ${SOURCES:.c=.o}
-FLAGS = -Wall -Werror -Wextra -ggdb -fsanitize=address
+FLAGS = -Wall -Werror -Wextra -ggdb -g3 -fsanitize=address
 CC = cc
 NAME = push_swap
 BONUS = checker
@@ -29,9 +29,6 @@ CHECKER_O = src/checker.o
 
 LIBFT_DIR = ../libft/src
 LIBFT		= $(LIBFT_DIR)/libft.a
-
-%.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@
 
 all: $(NAME)
 
@@ -45,6 +42,9 @@ $(BONUS): $(OBJECTS) $(CHECKER_O)
 
 $(NAME): $(OBJECTS) $(PUSHSWAP_O)
 	$(CC) $(FLAGS) $(PUSHSWAP_O) $(OBJECTS) -o $(NAME) $(LIBFT) 
+
+%.o: %.c
+	$(CC) $(FLAGS) -c $< -o $@
 
 libft:
 	$(LIBFT)
