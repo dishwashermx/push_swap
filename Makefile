@@ -6,7 +6,7 @@
 #    By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 17:20:07 by ghwa              #+#    #+#              #
-#    Updated: 2024/01/26 13:35:42 by ghwa             ###   ########.fr        #
+#    Updated: 2024/01/26 13:36:15 by ghwa             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ CHECKER_C = src/checker.c
 CHECKER_O = src/checker.o
 
 LIBFT_DIR = ../libft/src
-LIBFT		= $(LIBFT_DIR)/libft.a
+LIBFT = $(LIBFT_DIR)/libft.a
 
 all: $(NAME)
 
