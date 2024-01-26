@@ -6,7 +6,7 @@
 #    By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 17:20:07 by ghwa              #+#    #+#              #
-#    Updated: 2024/01/24 22:33:17 by ghwa             ###   ########.fr        #
+#    Updated: 2024/01/26 13:17:13 by ghwa             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFILES = initall.c cleanup.c inputcheck.c \
 	checker_utils.c
 SOURCES = $(addprefix src/, $(CFILES))
 OBJECTS = ${SOURCES:.c=.o}
-FLAGS = -Wall -Werror -Wextra -g3 -ggdb -fsanitize=address
+FLAGS = -Wall -Werror -Wextra -ggdb -fsanitize=address
 CC = cc
 NAME = push_swap
 BONUS = checker
@@ -29,38 +29,34 @@ CHECKER_O = src/checker.o
 
 LIBFT_DIR = ../libft/src
 LIBFT		= $(LIBFT_DIR)/libft.a
-LIBRARIES	= -L${LIBFT_DIR} -lft -lreadline -L/usr/local/opt/readline/lib
 
-INC_RL		= -I/usr/local/opt/readline/include
+%.o: %.c
+	$(CC) $(FLAGS) -c $< -o $@
 
 all: $(NAME)
-
-bonus: $(BONUS)
 
 $(LIBFT):
 	@make -C ${LIBFT_DIR}
 
-$(BONUS): $(LIBFT) $(OBJECTS) $(CHECKER_O)
-	$(CC) $(FLAGS) $(FLAGS) $(OBJECTS) $(LIBFT) $(CHECKER_O) -o $(BONUS)
+bonus: $(BONUS)
 
-$(NAME): $(LIBFT) $(OBJECTS) $(PUSHSWAP_O)
-	$(CC) $(FLAGS) $(FLAGS) $(PUSHSWAP_O) $(OBJECTS) $(LIBFT) -o $(NAME)
+$(BONUS): $(OBJECTS) $(CHECKER_O)
+	$(CC) $(FLAGS) $(OBJECTS) $(LIBFT) $(CHECKER_O) -o $(BONUS)
 
-%.o: %.c
-	$(CC) $(FLAGS) -c -o $@ $<
+$(NAME): $(OBJECTS) $(PUSHSWAP_O)
+	$(CC) $(FLAGS) $(PUSHSWAP_O) $(OBJECTS) -o $(NAME) $(LIBFT) 
 
 libft:
 	$(LIBFT)
 
 clean:
 	rm -f $(OBJECTS)
-	# make clean -C $(LIBFT_DIR)
+	rm -f $(CHECKER_O)
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f $(LIBFT)
-	@make fclean -C ${LIBFT_DIR}
+	rm -f $(CHECKER)
 
 re: fclean all
 
-.PHONY = all clean fclean re
+.PHONY = all clean fclean re bonus
