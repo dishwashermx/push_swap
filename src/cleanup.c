@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:37:23 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/25 00:59:12 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/29 13:03:38 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,11 @@ int	freeall(t_list **stacka, t_list**stackb, t_ps *ps)
 	return (0);
 }
 
-void	replace(char **str, t_ps *ps)
+void	replace(char **str)
 {
 	int	i;
 
 	i = 0;
-	(void)ps;
 	while (str[i])
 	{
 		if (ft_strncmp(str[i], "rb", 2) == 0 && \
@@ -66,10 +65,7 @@ void	replace(char **str, t_ps *ps)
 			i++;
 		}
 		else
-		{
-			ft_putstr_fd(str[i], 1);
-			ft_putchar_fd('\n', 1);
-		}
+			ft_printf("%s\n", str[i]);
 		i++;
 	}
 }
@@ -86,11 +82,19 @@ void	optops(t_ps *ps)
 	gnl = get_next_line(ps->fd);
 	str = ft_split(gnl, ' ');
 	close (ps->fd);
-	replace(str, ps);
+	if (ps->itemcount > 5)
+		replace(str);
+	else
+	{
+		while (str[i])
+			ft_printf("%s\n", str[i++]);
+	}
 	free (gnl);
+	i = 0;
 	while (str[i] != NULL)
 	{
 		free (str[i]);
 		i++;
 	}
+	free (str);
 }

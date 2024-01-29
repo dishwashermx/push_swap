@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:36:16 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/25 00:21:00 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/26 14:37:38 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,9 @@ void	fivesort(t_list **stacka, t_list **stackb, t_ps *ps)
 
 void	smallsort(t_ps *ps, t_list **stacka, t_list **stackb)
 {
-	if (countnodes(*stacka) == 3)
+	if (countnodes(*stacka) == 2)
+		ps_ra(stacka, stackb, ps);
+	else if (countnodes(*stacka) == 3)
 		threesort(stacka, stackb, ps);
 	else if (countnodes(*stacka) > 3)
 	{
