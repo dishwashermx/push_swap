@@ -6,7 +6,7 @@
 /*   By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:05:21 by ghwa              #+#    #+#             */
-/*   Updated: 2024/01/25 00:59:32 by ghwa             ###   ########.fr       */
+/*   Updated: 2024/01/29 13:27:39 by ghwa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
-# include "../libft/inc/libft.h"
+# include "../libft/libft.h"
 
 typedef struct s_ps
 {

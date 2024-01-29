@@ -6,7 +6,7 @@
 #    By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 17:20:07 by ghwa              #+#    #+#              #
-#    Updated: 2024/01/29 13:15:10 by ghwa             ###   ########.fr        #
+#    Updated: 2024/01/29 14:32:21 by ghwa             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFILES = initall.c cleanup.c inputcheck.c \
 	op_swap.c op_push.c op_rotate.c op_reverse_rotate.c
 SOURCES = $(addprefix src/, $(CFILES))
 OBJECTS = ${SOURCES:.c=.o}
-FLAGS = -Wall -Werror -Wextra -ggdb -g3 -fsanitize=address
+FLAGS = -Wall -Werror -Wextra -ggdb -g3
 CC = cc
 NAME = push_swap
 BONUS = checker
@@ -26,12 +26,12 @@ PUSHSWAP_O = src/pushswap.o
 CHECKER_C = src/checker.c
 CHECKER_O = src/checker.o
 
-LIBFT = ../libft/libft.a
+LIBFTDIR = ../libft/libft.a
 
 all: $(NAME)
 
 $(LIBFT):
-	@make -C ${LIBFT_DIR}
+	@make -C ${LIBFTDIR}
 
 bonus: $(BONUS)
 
