@@ -6,7 +6,7 @@
 #    By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 17:20:07 by ghwa              #+#    #+#              #
-#    Updated: 2024/01/29 14:32:21 by ghwa             ###   ########.fr        #
+#    Updated: 2024/01/29 15:14:14 by ghwa             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,26 +26,25 @@ PUSHSWAP_O = src/pushswap.o
 CHECKER_C = src/checker.c
 CHECKER_O = src/checker.o
 
-LIBFTDIR = ../libft/libft.a
+LIBFT_DIR = ../libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
 all: $(NAME)
 
-$(LIBFT):
-	@make -C ${LIBFTDIR}
-
 bonus: $(BONUS)
 
-$(BONUS): $(OBJECTS) $(CHECKER_O)
-	$(CC) $(FLAGS) $(OBJECTS) $(LIBFT) $(CHECKER_O) -o $(BONUS)
+libft:
+	@make fclean -C $(LIBFT_DIR)
+	@make -C ${LIBFT_DIR}
 
-$(NAME): $(OBJECTS) $(PUSHSWAP_O) $(LIBFT)
-	$(CC) $(FLAGS) $(PUSHSWAP_O) $(OBJECTS) -o $(NAME) $(LIBFT) 
+$(BONUS): $(OBJECTS) $(CHECKER_O)
+	$(CC) $(FLAGS) $(LIBFT) $(OBJECTS) $(CHECKER_O) -o $(BONUS)
+
+$(NAME): $(OBJECTS) $(PUSHSWAP_O)
+	$(CC) $(FLAGS) $(PUSHSWAP_O) $(LIBFT) $(OBJECTS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@
-
-libft:
-	$(LIBFT)
 
 clean:
 	rm -f $(OBJECTS)
@@ -58,4 +57,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY = all clean fclean re bonus
+.PHONY = all clean fclean re bonus libft
