@@ -6,7 +6,7 @@
 #    By: ghwa <ghwa@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 17:20:07 by ghwa              #+#    #+#              #
-#    Updated: 2024/01/29 15:14:14 by ghwa             ###   ########.fr        #
+#    Updated: 2025/06/05 15:59:19 by ghwa             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFILES = initall.c cleanup.c inputcheck.c \
 	op_swap.c op_push.c op_rotate.c op_reverse_rotate.c
 SOURCES = $(addprefix src/, $(CFILES))
 OBJECTS = ${SOURCES:.c=.o}
-FLAGS = -Wall -Werror -Wextra -ggdb -g3
+FLAGS = -Wall -Werror -Wextra -ggdb -g3 -fsanitize=address
 CC = cc
 NAME = push_swap
 BONUS = checker
@@ -57,4 +57,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY = all clean fclean re bonus libft
+.PHONY: all clean fclean re bonus libft
